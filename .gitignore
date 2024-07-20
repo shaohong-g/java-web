@@ -1,0 +1,5 @@
+.m2
+.idea
+.smarttomcat
+target
+src/main/resources/cred.properties
