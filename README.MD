@@ -65,3 +65,12 @@ https://stackoverflow.com/questions/9183321/how-to-use-jndi-datasource-provided-
 https://www.digitalocean.com/community/tutorials/spring-datasource-jndi-with-tomcat-example
 
 https://github.com/quartz-scheduler/quartz/tree/main/quartz/src/main/resources/org/quartz/impl/jdbcjobstore
+https://stackoverflow.com/questions/8298132/how-to-get-resource-from-the-context-xml-file-in-tomcat-webapp
+https://www.digitalocean.com/community/tutorials/spring-datasource-jndi-with-tomcat-example
+
+
+
+Mail:
+- https://stackoverflow.com/questions/4334753/how-to-send-multiple-emails-in-one-session
+- https://stackoverflow.com/questions/4184204/what-is-the-difference-between-getdefaultinstance-and-getinstance-in-session#:~:text=getInstance()%20%3A%20Get%20a%20new,and%20installed%20as%20the%20default.
+- https://www.digitalocean.com/community/tutorials/javamail-example-send-mail-in-java-smtp#javamail-example-program

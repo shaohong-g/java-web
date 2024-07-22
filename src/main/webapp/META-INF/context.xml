@@ -1,0 +1,20 @@
+
+<Context>
+    <Resource
+            name="jdbc/MyLocalDB"
+            global="jdbc/MyLocalDB"
+            auth="Container"
+            type="javax.sql.DataSource"
+            maxTotal="100"
+            maxIdle="30"
+            maxWaitMillis="10000"
+            username="${db.sql.username}"
+            password="${db.sql.password}"
+            driverClassName="com.mysql.jdbc.Driver"
+            url="jdbc:mysql://localhost:3306/general"
+    />
+    <ResourceLink name="jdbc/MyLocalDB"
+                  global="jdbc/TestDB"
+                  auth="Container"
+                  type="javax.sql.DataSource" />
+</Context>

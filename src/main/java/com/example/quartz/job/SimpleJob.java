@@ -41,7 +41,7 @@ public class SimpleJob implements InterruptableJob {
                             "LAST_SUCCESS_EXECUTION: " + data.getOrDefault(LAST_SUCCESS_EXECUTION, "-") + "\n" +
                             "LAST_EXECUTION: " + data.getOrDefault(LAST_EXECUTION, "-") + "\n" +
                             "EXCEPTION_STACK_COUNT: " + exception_stack_count + "\n" +
-                            "TEST BEAN: " + testBean + "\n" +
+                            "TEST BEAN (AUTOWIRED): " + testBean + "\n" +
                             "###############################################################"
             );
 

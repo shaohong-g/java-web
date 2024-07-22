@@ -31,8 +31,8 @@ import java.io.IOException;
 import java.util.Properties;
 
 @Configuration
-@PropertySource("classpath:application.properties")
-@EnableAutoConfiguration(exclude = {WebMvcAutoConfiguration.class, ThymeleafAutoConfiguration.class, ActiveMQAutoConfiguration.class})
+//@PropertySource("classpath:application.properties")
+//@EnableAutoConfiguration(exclude = {WebMvcAutoConfiguration.class, ThymeleafAutoConfiguration.class, ActiveMQAutoConfiguration.class})
 public class QuartzConfiguration implements ApplicationContextAware {
     private ApplicationContext applicationContext;
     @Override
@@ -58,7 +58,8 @@ public class QuartzConfiguration implements ApplicationContextAware {
     * */
     @Bean("qrtzSchedulerFactoryBean")
     public SchedulerFactoryBean schedulerFactoryBean(
-            @Qualifier("dataSource") BasicDataSource qrtzDataSource,
+            @Qualifier("dataSource") DataSource qrtzDataSource,
+//            @Qualifier("dataSource") BasicDataSource qrtzDataSource,
             @Qualifier("qrtzSpringBeanJobFactory") SpringBeanJobFactory jobFactory,
             @Value("quartz.properties") String propertyFileLoc) throws IOException {
         SchedulerFactoryBean factory = new SchedulerFactoryBean();

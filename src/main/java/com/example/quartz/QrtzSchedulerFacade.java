@@ -1,7 +1,9 @@
 package com.example.quartz;
 
+import org.quartz.JobDetail;
 import org.quartz.Scheduler;
 import org.quartz.SchedulerException;
+import org.quartz.Trigger;
 import org.springframework.scheduling.quartz.SchedulerFactoryBean;
 
 import javax.annotation.PreDestroy;
@@ -22,9 +24,13 @@ public class QrtzSchedulerFacade {
         // Method to initialize scheduler if necessary
         // Would initialize jobs and triggers if scheduler is not in Clustered mode
         // In Clustered Mode, jobs will be saved in DataSource and will be retrieved once scheduler is up.
-        scheduler.scheduleJob(QrtzJobHelper.getJob1(), QrtzTriggerHelper.getTrigger1());
+//        scheduler.scheduleJob(QrtzJobHelper.getJob1(), QrtzTriggerHelper.getTrigger1());
     }
 
+    private void triggerJob(JobDetail jobdetail, Trigger trigger) throws SchedulerException {
+        Scheduler scheduler = this.getQrtzScheduler();
+        scheduler.scheduleJob(jobdetail, trigger);
+    }
 
 
 

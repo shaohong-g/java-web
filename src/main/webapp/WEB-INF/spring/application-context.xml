@@ -3,12 +3,17 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
        xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:jee="http://www.springframework.org/schema/jee"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
     http://www.springframework.org/schema/beans/spring-beans.xsd
     http://www.springframework.org/schema/context
     http://www.springframework.org/schema/context/spring-context.xsd
     http://www.springframework.org/schema/mvc
-    http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+    http://www.springframework.org/schema/mvc/spring-mvc.xsd
+    http://www.springframework.org/schema/jee
+    http://www.springframework.org/schema/jee/spring-jee.xsd">
+
+    <jee:jndi-lookup id="dataSource" jndi-name="jdbc/MyLocalDB" expected-type="javax.sql.DataSource" resource-ref="true"/>
 
     <context:component-scan base-package="com.example.parentscan"/>
     <context:annotation-config/>
@@ -30,11 +35,13 @@
 <!--        </property>-->
         <property name="ignoreUnresolvablePlaceholders" value="true"/>
     </bean>
-    <bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource" destroy-method="close">
-        <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
-        <property name="url" value="jdbc:mysql://localhost:3306/general"/>
-        <property name="username" value="${db.sql.username}"/>
-        <property name="password" value="${db.sql.password}"/>
-    </bean>
+<!--    <bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource" destroy-method="close">-->
+<!--        <property name="driverClassName" value="com.mysql.jdbc.Driver"/>-->
+<!--        <property name="url" value="jdbc:mysql://localhost:3306/general"/>-->
+<!--        <property name="username" value="${db.sql.username}"/>-->
+<!--        <property name="password" value="${db.sql.password}"/>-->
+<!--    </bean>-->
+
+
 
 </beans>

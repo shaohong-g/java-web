@@ -1,5 +1,6 @@
 package com.example.scan;
 
+import com.example.util.Config;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.http.MediaType;
@@ -22,7 +23,7 @@ public class Controller {
         return "Hello Health";
     }
 
-    @GetMapping(value ="/test", produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value ="/beans", produces = MediaType.APPLICATION_JSON_VALUE)
     public Map<String, Object> test() {
         System.out.println("Test");
         Map<String, Object> map = new HashMap<String, Object>();
@@ -36,5 +37,13 @@ public class Controller {
         return map;
     }
 
+    @GetMapping(value ="/test", produces = MediaType.APPLICATION_JSON_VALUE)
+    public Map<String, Object> getConfig() {
+        Map<String, Object> map = new HashMap<String, Object>();
+        map.put("mailPassword", Config.mailPassword);
+        map.put("mailUsername", Config.mailUsername);
+        map.put("datetime", ZonedDateTime.now().toString());
+        return map;
+    }
 
 }
