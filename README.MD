@@ -74,3 +74,56 @@ Mail:
 - https://stackoverflow.com/questions/4334753/how-to-send-multiple-emails-in-one-session
 - https://stackoverflow.com/questions/4184204/what-is-the-difference-between-getdefaultinstance-and-getinstance-in-session#:~:text=getInstance()%20%3A%20Get%20a%20new,and%20installed%20as%20the%20default.
 - https://www.digitalocean.com/community/tutorials/javamail-example-send-mail-in-java-smtp#javamail-example-program
+
+
+## Parser (CSV)
+```java
+<!-- https://mvnrepository.com/artifact/com.univocity/univocity-parsers -->
+		<dependency>
+			<groupId>com.univocity</groupId>
+			<artifactId>univocity-parsers</artifactId>
+			<version>2.9.1</version>
+		</dependency>
+```
+```java
+    @Parsed
+        Integer id;
+    @Parsed(field = "col1")
+        String testString1;
+    @Parsed(field = "col2")
+        String testString2;
+    @Parsed
+    Timestamp timestamp;
+	@Test
+	void testReadCSV() throws IOException {
+		System.out.println("Test CSV Parser...");
+		File currDir = new File(".");
+		String path = currDir.getAbsolutePath();
+		String fileLocation = path.substring(0, path.length() - 1) + "Book1.csv";
+
+//		OutputStream os = response.getOutputStream()
+//		MultipartFile file = null; // file.getInputStream()
+
+
+		CsvParserSettings parserSettings = new CsvParserSettings();
+		CsvRoutines routines = new CsvRoutines(parserSettings);
+
+		for (SimpleBean2 eachBean : routines.iterate(SimpleBean2.class, new File(fileLocation), "UTF-8")) {
+			//process your bean
+			System.out.println(eachBean);
+		}
+	}
+
+	@Test
+	void restWriteCSV() {
+		ArrayList<SimpleBean2> SimpleBean2List = new ArrayList<SimpleBean2>();
+		SimpleBean2List.add(new SimpleBean2(1, null, null,null));
+		SimpleBean2List.add(new SimpleBean2(null, "//t//\\n/r/wa\\\'/dsa\"12\"\"dsa'd'", " !@#$%^^& *& *() ()_) ", Timestamp.valueOf(ZonedDateTime.now().toLocalDateTime())));
+
+		// https://www.baeldung.com/java-univocity-parsers
+		new CsvRoutines().writeAll(SimpleBean2List, SimpleBean2.class, new File("output.csv"), "id", "col1", " testString2", "timestamp", "timestamp2");
+
+
+	}
+
+```
